@@ -40,7 +40,10 @@ struct ContentView: View {
                 }
                 .padding(20)
                 .background(
-                    Color.blue
+                    ZStack {
+                        Color("ButtonColor")
+                        LinearGradient(colors: [.white.opacity(0.3), .clear], startPoint: .top, endPoint: .bottom)
+                    }
                 )
                 .foregroundStyle(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 21))
