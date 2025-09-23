@@ -29,6 +29,7 @@ struct Game {
     /// - The player is awarded 100 bonus points if difference is 0.
     /// - The player is awarded 50 bonus points if difference is only 1.
     func points(for sliderValue: Int) -> Int {
-        return 999
+        let difference = abs(target - sliderValue)
+        return 100 - difference
     }
 }
