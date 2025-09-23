@@ -14,12 +14,13 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
+            Text("🎯🎯🎯\nPut the Bullseye as close as you can to".uppercased())
                 .bold()
                 .kerning(2)
                 .font(.footnote)
                 .multilineTextAlignment(.center)
                 .lineSpacing(4)
+                .padding(.horizontal)
             Text(String(game.target))
                 .fontWeight(.black)
                 .kerning(-1)
@@ -29,9 +30,18 @@ struct ContentView: View {
                 Slider(value: $sliderValue, in: 1...100)
                 Text("100").bold()
             }
-            Button("Hit Me") {
+            .padding()
+            Button("Hit Me".uppercased()) {
                 alertIsVisible = true
             }
+            .padding(20)
+            .background(
+                Color.blue
+            )
+            .foregroundStyle(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 21))
+            .bold()
+            .font(.title3)
             .alert(
                 "Hello there!",
                 isPresented: $alertIsVisible,
