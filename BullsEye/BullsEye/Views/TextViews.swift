@@ -10,10 +10,6 @@ import SwiftUI
 struct InstructionText: View {
     let text: String
     
-    init(_ text: String) {
-        self.text = text
-    }
-    
     var body: some View {
         Text(text.uppercased())
             .bold()
@@ -22,6 +18,10 @@ struct InstructionText: View {
             .multilineTextAlignment(.center)
             .lineSpacing(4)
             .foregroundStyle(Color("TextColor"))
+    }
+    
+    init(_ text: String) {
+        self.text = text
     }
 }
 
@@ -37,7 +37,22 @@ struct BigNumberText: View {
     }
 }
 
+struct SliderLabelText: View {
+    let text: String
+    
+    var body: some View {
+        Text(text)
+            .bold()
+            .foregroundStyle(Color("TextColor"))
+    }
+    
+    init(_ text: String) {
+        self.text = text
+    }
+}
+
 #Preview {
     InstructionText("🎯🎯🎯\nPut the Bullseye as close as you can to")
-    BigNumberText(number: 89)
+    BigNumberText(number: 999)
+    SliderLabelText("99")
 }

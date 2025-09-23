@@ -19,14 +19,7 @@ struct ContentView: View {
             
             VStack {
                 InstructionsView(game: game)
-                HStack {
-                    Text("1")
-                    Slider(value: $sliderValue, in: 1...100)
-                    Text("100")
-                }
-                .bold()
-                .foregroundStyle(Color("TextColor"))
-                .padding()
+                SliderView(sliderValue: $sliderValue)
                 Button("Hit Me".uppercased()) {
                     alertIsVisible = true
                 }
@@ -73,6 +66,19 @@ struct InstructionsView: View {
                 .padding(.horizontal)
             BigNumberText(number: game.target)
         }
+    }
+}
+
+struct SliderView: View {
+    @Binding var sliderValue: Double
+    
+    var body: some View {
+        HStack {
+            SliderLabelText("1")
+            Slider(value: $sliderValue, in: 1...100)
+            SliderLabelText("100")
+        }
+        .padding()
     }
 }
 
