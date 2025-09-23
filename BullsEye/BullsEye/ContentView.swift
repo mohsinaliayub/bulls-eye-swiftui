@@ -13,14 +13,17 @@ struct ContentView: View {
             Text("🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
                 .bold()
                 .kerning(2)
+                .font(.footnote)
                 .multilineTextAlignment(.center)
                 .lineSpacing(4)
-                .font(.footnote)
             Text("89")
+                .fontWeight(.black)
+                .kerning(-1)
+                .font(.largeTitle)
             HStack {
-                Text("1")
+                Text("1").bold()
                 Slider(value: .constant(50), in: 1...100)
-                Text("100")
+                Text("100").bold()
             }
             Button("Hit Me") {
                 
