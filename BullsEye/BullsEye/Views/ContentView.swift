@@ -25,15 +25,19 @@ struct ContentView: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(4)
                     .padding(.horizontal)
+                    .foregroundStyle(Color("TextColor"))
                 Text(String(game.target))
                     .fontWeight(.black)
                     .kerning(-1)
                     .font(.largeTitle)
+                    .foregroundStyle(Color("TextColor"))
                 HStack {
-                    Text("1").bold()
+                    Text("1")
                     Slider(value: $sliderValue, in: 1...100)
-                    Text("100").bold()
+                    Text("100")
                 }
+                .bold()
+                .foregroundStyle(Color("TextColor"))
                 .padding()
                 Button("Hit Me".uppercased()) {
                     alertIsVisible = true
