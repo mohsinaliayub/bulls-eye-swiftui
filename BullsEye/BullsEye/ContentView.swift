@@ -30,6 +30,18 @@ struct ContentView: View {
             Button("Hit Me") {
                 alertIsVisible = true
             }
+            .alert(
+                "Hello there!",
+                isPresented: $alertIsVisible,
+                actions: {
+                    Button("Awesome") {
+                        print("Alert Dismissed!")
+                    }
+                },
+                message: {
+                    Text("This is my first alert!")
+                }
+            )
         }
     }
 }
