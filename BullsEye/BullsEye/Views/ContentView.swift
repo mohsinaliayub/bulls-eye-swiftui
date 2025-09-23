@@ -18,19 +18,7 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             VStack {
-                Text("🎯🎯🎯\nPut the Bullseye as close as you can to".uppercased())
-                    .bold()
-                    .kerning(2)
-                    .font(.footnote)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(4)
-                    .padding(.horizontal)
-                    .foregroundStyle(Color("TextColor"))
-                Text(String(game.target))
-                    .fontWeight(.black)
-                    .kerning(-1)
-                    .font(.largeTitle)
-                    .foregroundStyle(Color("TextColor"))
+                InstructionsView(game: game)
                 HStack {
                     Text("1")
                     Slider(value: $sliderValue, in: 1...100)
@@ -72,6 +60,18 @@ struct ContentView: View {
                     }
                 )
             }
+        }
+    }
+}
+
+struct InstructionsView: View {
+    let game: Game
+    
+    var body: some View {
+        VStack {
+            InstructionText("🎯🎯🎯\nPut the Bullseye as close as you can to")
+                .padding(.horizontal)
+            BigNumberText(number: game.target)
         }
     }
 }
