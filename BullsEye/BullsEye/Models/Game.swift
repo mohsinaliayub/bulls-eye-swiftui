@@ -13,7 +13,7 @@ struct Game {
     /// The random Int value is set when either a new round of the game begins
     /// or the player starts over the game completely. This random value is between
     /// 1 and 100 (inclusive), the slider's minimum and maximum values, respectively.
-    var target: Int = 37
+    var target: Int = Int.random(in: 1...100)
     /// The player's total score aggregated over multiple rounds.
     var score: Int = 0
     /// The current round being played.
