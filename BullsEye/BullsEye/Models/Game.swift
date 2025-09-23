@@ -21,7 +21,7 @@ struct Game {
     /// The round increments everytime the player makes a match. The round gets reset when a new game starts.
     var round: Int = 1
     
-    /// Calculates the total points for a difference between target and current value.
+    /// Calculates the total points for a difference between target value and player's guess.
     /// - Parameter sliderValue: The slider's current value rounded to the nearest integer.
     /// - Returns: A score based on player's effort, plus any bonus score.
     ///
