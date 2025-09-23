@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var alertIsVisible: Bool = false
+    
     var body: some View {
         VStack {
             Text("🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
@@ -26,7 +28,7 @@ struct ContentView: View {
                 Text("100").bold()
             }
             Button("Hit Me") {
-                
+                alertIsVisible = true
             }
         }
     }
