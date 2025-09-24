@@ -28,8 +28,12 @@ struct RoundedImageViewFilled: View {
     var body: some View {
         Image(systemName: systemName)
             .font(.title)
-            .foregroundStyle(Color("TextColor"))
+            .foregroundStyle(Color("ButtonFilledTextColor"))
             .frame(width: 56, height: 56)
+            .background(
+                Circle()
+                    .fill(Color("ButtonFilledBackgroundColor"))
+            )
     }
 }
 
