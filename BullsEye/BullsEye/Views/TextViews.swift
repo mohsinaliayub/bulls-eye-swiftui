@@ -51,8 +51,25 @@ struct SliderLabelText: View {
     }
 }
 
+struct LabelText: View {
+    let text: String
+    
+    var body: some View {
+        Text(text.uppercased())
+            .bold()
+            .kerning(1.5)
+            .font(.caption)
+            .foregroundStyle(Color("TextColor"))
+    }
+    
+    init(_ text: String) {
+        self.text = text
+    }
+}
+
 #Preview {
     InstructionText("🎯🎯🎯\nPut the Bullseye as close as you can to")
     BigNumberText(number: 999)
     SliderLabelText("99")
+    LabelText("Score")
 }

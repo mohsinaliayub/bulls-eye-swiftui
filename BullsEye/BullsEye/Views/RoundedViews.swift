@@ -42,7 +42,29 @@ struct RoundedViewsPreview: View {
         VStack(spacing: 10) {
             RoundedImageViewStroked(systemName: "list.dash")
             RoundedImageViewFilled(systemName: "arrow.counterclockwise")
+            RoundedRectTextView("100")
         }
+    }
+}
+
+struct RoundedRectTextView: View {
+    let text: String
+    
+    var body: some View {
+        Text(text)
+            .bold()
+            .kerning(-0.2)
+            .font(.title3)
+            .foregroundStyle(Color("TextColor"))
+            .frame(width: 68, height: 56)
+            .overlay(
+                RoundedRectangle(cornerRadius: 21)
+                    .strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2)
+            )
+    }
+    
+    init(_ text: String) {
+        self.text = text
     }
 }
 
