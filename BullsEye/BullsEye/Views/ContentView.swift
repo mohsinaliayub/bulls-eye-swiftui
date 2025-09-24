@@ -43,8 +43,10 @@ struct SliderView: View {
     var body: some View {
         HStack {
             SliderLabelText("1")
+                .frame(width: 35, alignment: .trailing)
             Slider(value: $sliderValue, in: 1...100)
             SliderLabelText("100")
+                .frame(width: 35)
         }
         .padding()
     }
