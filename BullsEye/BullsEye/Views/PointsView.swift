@@ -19,7 +19,9 @@ struct PointsView: View {
             BigNumberText(number: sliderValue)
             BodyText("You scored \(points) Points\n🎉🎉🎉")
             Button {
-                alertIsVisible = false
+                withAnimation {
+                    alertIsVisible = false
+                }
                 game.startNewRound(points: points)
             } label: {
                 ButtonText("Start New Round")
