@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var alertIsVisible = false
+    @State private var alertIsVisible = true
     @State private var sliderValue = 50.0
     @State private var game = Game()
     
@@ -18,11 +18,17 @@ struct ContentView: View {
             
             VStack {
                 InstructionsView(game: game)
-                    .padding(.bottom, 100)
-                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: sliderValue, game: $game)
+                    .padding(.bottom, alertIsVisible ? 0 : 100)
+                if alertIsVisible {
+                    PointsView(sliderValue: Int(round(sliderValue)), game: $game)
+                } else {
+                    HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: sliderValue, game: $game)
+                }
             }
             
-            SliderView(sliderValue: $sliderValue)
+            if !alertIsVisible {
+                SliderView(sliderValue: $sliderValue)
+            }
         }
     }
 }
@@ -78,26 +84,6 @@ struct HitMeButton: View {
         .clipShape(RoundedRectangle(cornerRadius: 21))
         .bold()
         .font(.title3)
-        .alert(
-            "Hello there!",
-            isPresented: $alertIsVisible,
-            actions: {
-                Button("Awesome") {
-                    let roundedValue = Int(round(sliderValue))
-                    let points = game.points(for: roundedValue)
-                    game.startNewRound(points: points)
-                }
-            },
-            message: {
-                let roundedValue = Int(round(sliderValue))
-                let points = game.points(for: roundedValue)
-                let message = """
-                    The slider's value is \(roundedValue).
-                    You scored \(points) this round.
-                    """
-                Text(message)
-            }
-        )
     }
 }
 
