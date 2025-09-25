@@ -18,8 +18,7 @@ struct BackgroundView: View {
         }
         .padding()
         .background(
-            Color("BackgroundColor")
-                .ignoresSafeArea()
+            RingsView()
         )
     }
 }
@@ -64,6 +63,22 @@ struct NumberView: View {
         VStack(spacing: 5) {
             LabelText(title)
             RoundedRectTextView(String(number))
+        }
+    }
+}
+
+struct RingsView: View {
+    var body: some View {
+        ZStack {
+            Color("BackgroundColor")
+                .ignoresSafeArea()
+            
+            ForEach(1..<6) { index in
+                let size: CGFloat = CGFloat(index * 100)
+                Circle()
+                    .strokeBorder(Color.black, lineWidth: 20)
+                    .frame(width: size, height: size)
+            }
         }
     }
 }
