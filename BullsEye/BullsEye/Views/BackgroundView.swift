@@ -75,8 +75,14 @@ struct RingsView: View {
             
             ForEach(1..<6) { index in
                 let size: CGFloat = CGFloat(index * 100)
+                let gradient = RadialGradient(
+                    colors: [Color("RingsColor").opacity(0.3 * 0.8), Color("RingsColor").opacity(0)],
+                    center: .center,
+                    startRadius: 100,
+                    endRadius: 300
+                )
                 Circle()
-                    .strokeBorder(Color.black, lineWidth: 20)
+                    .stroke(gradient, lineWidth: 20)
                     .frame(width: size, height: size)
             }
         }
