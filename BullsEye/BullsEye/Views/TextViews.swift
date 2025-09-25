@@ -106,6 +106,10 @@ struct ScoreText: View {
     
     var body: some View {
         Text(String(score))
+            .bold()
+            .kerning(-0.2)
+            .font(.title3)
+            .foregroundStyle(Color("TextColor"))
     }
 }
 
@@ -114,6 +118,10 @@ struct DateText: View {
     
     var body: some View {
         Text(date, style: .time)
+            .bold()
+            .kerning(-0.2)
+            .font(.title3)
+            .foregroundStyle(Color("TextColor"))
     }
 }
 
