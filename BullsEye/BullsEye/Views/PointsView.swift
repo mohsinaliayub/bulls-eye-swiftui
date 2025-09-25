@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct PointsView: View {
-    let sliderValue: Int
+    @Binding var alertIsVisible: Bool
     @Binding var game: Game
+    let sliderValue: Int
     
     var body: some View {
+        let points = game.points(for: sliderValue)
         VStack(spacing: 10) {
             InstructionText("The slider's value is")
             BigNumberText(number: sliderValue)
-            BodyText("You scored \(game.points(for: sliderValue)) Points\n🎉🎉🎉")
+            BodyText("You scored \(points) Points\n🎉🎉🎉")
             Button {
-                game.startNewRound(points: game.points(for: sliderValue))
+                alertIsVisible = false
+                game.startNewRound(points: points)
             } label: {
                 ButtonText("Start New Round")
             }
@@ -31,9 +34,9 @@ struct PointsView: View {
 }
 
 #Preview("Portrait") {
-    PointsView(sliderValue: 50, game: .constant(Game()))
+    PointsView(alertIsVisible: .constant(true), game: .constant(Game()), sliderValue: 50)
 }
 
 #Preview("Landscape Left", traits: .landscapeLeft) {
-    PointsView(sliderValue: 50, game: .constant(Game()))
+    PointsView(alertIsVisible: .constant(true), game: .constant(Game()), sliderValue: 50)
 }
