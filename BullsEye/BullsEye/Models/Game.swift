@@ -42,6 +42,15 @@ struct Game {
         return awardedPoints + bonusPoints
     }
     
+    /// Saves round information for leaderboard.
+    /// - Parameter points: The number of points scored by the player in current round.
+    ///
+    private mutating func addToLeaderboard(score: Int) {
+        let round = LeaderboardEntry(score: score, date: Date())
+        leaderboardEntries.append(round)
+        leaderboardEntries.sort { $0.score > $1.score }
+    }
+    
     /// Updates the score and sets up a new round for the player.
     /// - Parameter points: The number of points scored by the user in current round.
     ///
@@ -51,6 +60,7 @@ struct Game {
         score += points
         round += 1
         target = Int.random(in: 1...100)
+        addToLeaderboard(score: points)
     }
     
     /// Calculates the bonus points for a difference between target and player's guess.
@@ -73,12 +83,15 @@ struct Game {
     /// It resets the score, round and target values for the game.
     mutating func restart() {
         score = 0
-        round = 0
-        startNewRound(points: 0)
+        round = 1
+        target = Int.random(in: 1...100)
     }
 }
 
+/// A single game round.
 struct LeaderboardEntry {
+    /// The player's score for a single round.
     let score: Int
+    /// The date and time when the player finished a round.
     let date: Date
 }
