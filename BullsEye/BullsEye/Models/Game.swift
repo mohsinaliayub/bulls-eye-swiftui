@@ -35,7 +35,9 @@ struct Game {
     /// - The player is awarded 50 bonus points if difference is only 1.
     func points(for sliderValue: Int) -> Int {
         let difference = abs(target - sliderValue)
-        return 100 - difference
+        let awardedPoints = 100 - difference
+        let bonusPoints = bonusPoints(for: difference)
+        return awardedPoints + bonusPoints
     }
     
     /// Updates the score and sets up a new round for the player.
@@ -47,5 +49,13 @@ struct Game {
         score += points
         round += 1
         target = Int.random(in: 1...100)
+    }
+    
+    private func bonusPoints(for difference: Int) -> Int {
+        switch difference {
+        case 0: return 100
+        case 1, 2: return 50
+        default: return 0
+        }
     }
 }
