@@ -73,6 +73,7 @@ struct HitMeButton: View {
     @Binding var game: Game
     
     var body: some View {
+        let roundedRect = RoundedRectangle(cornerRadius: Constants.General.roundedRectCornerRadius)
         Button("Hit Me".uppercased()) {
             withAnimation {
                 alertIsVisible = true
@@ -86,11 +87,10 @@ struct HitMeButton: View {
             }
         )
         .overlay(
-            RoundedRectangle(cornerRadius: Constants.General.roundedRectCornerRadius)
-                .strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth)
+            roundedRect.strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth)
         )
         .foregroundStyle(.white)
-        .clipShape(RoundedRectangle(cornerRadius: Constants.General.roundedRectCornerRadius))
+        .clipShape(roundedRect)
         .bold()
         .font(.title3)
     }
