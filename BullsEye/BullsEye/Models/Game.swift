@@ -21,6 +21,8 @@ struct Game {
     /// The round increments everytime the player makes a match. The round gets reset when a new game starts.
     private(set) var round = 0
     
+    private(set) var leaderboardEntries: [LeaderboardEntry] = []
+    
     init() {
         // Set a fresh game for the player.
         restart()
@@ -74,4 +76,9 @@ struct Game {
         round = 0
         startNewRound(points: 0)
     }
+}
+
+struct LeaderboardEntry {
+    let score: Int
+    let date: Date
 }
