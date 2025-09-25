@@ -68,6 +68,8 @@ struct NumberView: View {
 }
 
 struct RingsView: View {
+    @Environment(\.colorScheme) private var colorScheme
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor")
@@ -75,8 +77,10 @@ struct RingsView: View {
             
             ForEach(1..<6) { index in
                 let size: CGFloat = CGFloat(index * 100)
+                let opacityMultiplier = colorScheme == .dark ? 0.1 : 0.3
                 let gradient = RadialGradient(
-                    colors: [Color("RingsColor").opacity(0.3 * 0.8), Color("RingsColor").opacity(0)],
+                    colors: [Color("RingsColor").opacity(opacityMultiplier * 0.8),
+                             Color("RingsColor").opacity(0)],
                     center: .center,
                     startRadius: 100,
                     endRadius: 300
