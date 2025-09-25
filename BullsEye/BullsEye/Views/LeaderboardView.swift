@@ -23,8 +23,9 @@ struct LeaderboardView: View {
 }
 
 struct HeaderView: View {
-    @Environment(\.verticalSizeClass) var verticalSizeClass
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ZStack {
@@ -37,7 +38,7 @@ struct HeaderView: View {
             HStack {
                 Spacer()
                 Button {
-                    
+                    dismiss()
                 } label: {
                     RoundedImageViewFilled(systemName: "xmark")
                 }
