@@ -22,8 +22,8 @@ struct Game {
     var round = 0
     
     init() {
-        // Start the game with 0 points.
-        startNewRound(points: 0)
+        // Set a fresh game for the player.
+        restart()
     }
     
     /// Calculates the total points for a difference between target value and player's guess.
@@ -64,5 +64,14 @@ struct Game {
         case 1, 2: return 50
         default: return 0
         }
+    }
+    
+    /// Sets up a fresh game for the player.
+    ///
+    /// It resets the score, round and target values for the game.
+    mutating func restart() {
+        score = 0
+        round = 0
+        startNewRound(points: 0)
     }
 }
