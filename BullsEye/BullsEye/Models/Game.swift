@@ -13,13 +13,18 @@ struct Game {
     /// The random Int value is set when either a new round of the game begins
     /// or the player starts over the game completely. This random value is between
     /// 1 and 100 (inclusive), the slider's minimum and maximum values, respectively.
-    var target = Int.random(in: 1...100)
+    var target = 0
     /// The player's total score aggregated over multiple rounds.
     var score = 0
     /// The current round being played.
     ///
     /// The round increments everytime the player makes a match. The round gets reset when a new game starts.
-    var round = 1
+    var round = 0
+    
+    init() {
+        // Start the game with 0 points.
+        startNewRound(points: 0)
+    }
     
     /// Calculates the total points for a difference between target value and player's guess.
     /// - Parameter sliderValue: The slider's current value rounded to the nearest integer.
@@ -41,5 +46,6 @@ struct Game {
     mutating func startNewRound(points: Int) {
         score += points
         round += 1
+        target = Int.random(in: 1...100)
     }
 }
