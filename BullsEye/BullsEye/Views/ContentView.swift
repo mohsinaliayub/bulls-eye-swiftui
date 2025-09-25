@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var alertIsVisible = true
+    @State private var alertIsVisible = false
     @State private var sliderValue = 50.0
     @State private var game = Game()
+    
+    private var roundedSliderValue: Int {
+        Int(round(sliderValue))
+    }
     
     var body: some View {
         ZStack {
@@ -20,9 +24,9 @@ struct ContentView: View {
                 InstructionsView(game: game)
                     .padding(.bottom, alertIsVisible ? 0 : 100)
                 if alertIsVisible {
-                    PointsView(sliderValue: Int(round(sliderValue)), game: $game)
+                    PointsView(sliderValue: roundedSliderValue, game: $game)
                 } else {
-                    HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: sliderValue, game: $game)
+                    HitMeButton(alertIsVisible: $alertIsVisible, game: $game)
                 }
             }
             
@@ -62,7 +66,6 @@ struct SliderView: View {
 
 struct HitMeButton: View {
     @Binding var alertIsVisible: Bool
-    let sliderValue: Double
     @Binding var game: Game
     
     var body: some View {
