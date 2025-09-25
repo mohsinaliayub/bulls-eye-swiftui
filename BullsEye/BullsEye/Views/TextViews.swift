@@ -125,6 +125,18 @@ struct DateText: View {
     }
 }
 
+struct BigBoldText: View {
+    let text: String
+    
+    var body: some View {
+        Text(text.uppercased())
+            .kerning(2)
+            .font(.title)
+            .fontWeight(.black)
+            .foregroundStyle(Color("TextColor"))
+    }
+}
+
 #Preview {
     InstructionText("🎯🎯🎯\nPut the Bullseye as close as you can to")
     BigNumberText(number: 999)
@@ -134,4 +146,5 @@ struct DateText: View {
     ButtonText("Start New Round").padding(.horizontal)
     ScoreText(score: 459)
     DateText(date: Date())
+    BigBoldText(text: "Leaderboard")
 }
