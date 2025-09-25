@@ -37,16 +37,6 @@ struct RoundedImageViewFilled: View {
     }
 }
 
-struct RoundedViewsPreview: View {
-    var body: some View {
-        VStack(spacing: 10) {
-            RoundedImageViewStroked(systemName: "list.dash")
-            RoundedImageViewFilled(systemName: "arrow.counterclockwise")
-            RoundedRectTextView("100")
-        }
-    }
-}
-
 struct RoundedRectTextView: View {
     let text: String
     
@@ -65,6 +55,29 @@ struct RoundedRectTextView: View {
     
     init(_ text: String) {
         self.text = text
+    }
+}
+
+struct RoundedTextView: View {
+    let text: String
+    
+    var body: some View {
+        Text(text)
+    }
+    
+    init(_ text: String) {
+        self.text = text
+    }
+}
+
+struct RoundedViewsPreview: View {
+    var body: some View {
+        VStack(spacing: 10) {
+            RoundedImageViewStroked(systemName: "list.dash")
+            RoundedImageViewFilled(systemName: "arrow.counterclockwise")
+            RoundedRectTextView("100")
+            RoundedTextView("1")
+        }
     }
 }
 

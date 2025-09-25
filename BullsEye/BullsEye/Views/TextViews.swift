@@ -101,6 +101,22 @@ struct ButtonText: View {
     }
 }
 
+struct ScoreText: View {
+    let score: Int
+    
+    var body: some View {
+        Text(String(score))
+    }
+}
+
+struct DateText: View {
+    let date: Date
+    
+    var body: some View {
+        Text(date, style: .time)
+    }
+}
+
 #Preview {
     InstructionText("🎯🎯🎯\nPut the Bullseye as close as you can to")
     BigNumberText(number: 999)
@@ -108,4 +124,6 @@ struct ButtonText: View {
     LabelText("Score")
     BodyText("You scored 200 Points\n🎉🎉🎉")
     ButtonText("Start New Round").padding(.horizontal)
+    ScoreText(score: 459)
+    DateText(date: Date())
 }
