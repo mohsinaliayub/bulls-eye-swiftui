@@ -18,11 +18,17 @@ struct LeaderboardView: View {
             VStack(spacing: 10) {
                 HeaderView()
                 LabelView()
-                VStack(spacing: 10) {
-                    ForEach(game.leaderboardEntries.indices, id: \.self) { index in
-                        let entry = game.leaderboardEntries[index]
-                        RowView(index: index + 1, score: entry.score, date: entry.date)
-                    }
+                leaderboardRows
+            }
+        }
+    }
+    
+    private var leaderboardRows: some View {
+        ScrollView {
+            VStack(spacing: 10) {
+                ForEach(game.leaderboardEntries.indices, id: \.self) { index in
+                    let entry = game.leaderboardEntries[index]
+                    RowView(index: index + 1, score: entry.score, date: entry.date)
                 }
             }
         }
@@ -51,7 +57,7 @@ struct HeaderView: View {
                 }
             }
         }
-        .padding(.horizontal)
+        .padding([.horizontal, .top])
     }
 }
 
