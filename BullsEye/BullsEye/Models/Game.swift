@@ -51,6 +51,13 @@ struct Game {
         target = Int.random(in: 1...100)
     }
     
+    /// Calculates the bonus points for a difference between target and player's guess.
+    /// - Parameter difference: The absolute difference between target and current value.
+    /// - Returns: A bonus score based on player's effort.
+    ///
+    /// The player is awarded bonus points on how good they did in matching the target value:
+    /// - The player is awarded 100 bonus points if difference is 0.
+    /// - The player is awarded 50 bonus points if difference is either a 1 or 2.
     private func bonusPoints(for difference: Int) -> Int {
         switch difference {
         case 0: return 100
