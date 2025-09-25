@@ -30,7 +30,7 @@ struct PointsView: View {
         .padding()
         .frame(maxWidth: 300)
         .background(Color("BackgroundColor"))
-        .clipShape(RoundedRectangle(cornerRadius: 21))
+        .clipShape(RoundedRectangle(cornerRadius: Constants.General.roundedRectCornerRadius))
         .shadow(radius: 10, x: 5, y: 5)
     }
 }
