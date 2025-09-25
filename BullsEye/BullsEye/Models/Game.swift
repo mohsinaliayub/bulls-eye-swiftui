@@ -13,13 +13,13 @@ struct Game {
     /// The random Int value is set when either a new round of the game begins
     /// or the player starts over the game completely. This random value is between
     /// 1 and 100 (inclusive), the slider's minimum and maximum values, respectively.
-    var target = 0
+    private(set) var target = 0
     /// The player's total score aggregated over multiple rounds.
-    var score = 0
+    private(set) var score = 0
     /// The current round being played.
     ///
     /// The round increments everytime the player makes a match. The round gets reset when a new game starts.
-    var round = 0
+    private(set) var round = 0
     
     init() {
         // Set a fresh game for the player.
