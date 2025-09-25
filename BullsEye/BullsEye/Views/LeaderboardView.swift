@@ -23,9 +23,17 @@ struct LeaderboardView: View {
 }
 
 struct HeaderView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     var body: some View {
         ZStack {
-            BigBoldText(text: "Leaderboard")
+            HStack {
+                BigBoldText(text: "Leaderboard")
+                if verticalSizeClass == .regular && horizontalSizeClass == .compact {
+                    Spacer()
+                }
+            }
             HStack {
                 Spacer()
                 Button {
@@ -34,8 +42,8 @@ struct HeaderView: View {
                     RoundedImageViewFilled(systemName: "xmark")
                 }
             }
-            .padding(.trailing)
         }
+        .padding(.horizontal)
     }
 }
 
