@@ -28,7 +28,7 @@ struct RowView: View {
                 .strokeBorder(Color("LeaderboardRowColor"), lineWidth: Constants.General.strokeWidth)
         )
         .padding(.horizontal)
-        .frame(maxWidth: 480)
+        .frame(maxWidth: Constants.Leaderboard.maxRowWidth)
     }
 }
 
