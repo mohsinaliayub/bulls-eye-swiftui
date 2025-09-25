@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LeaderboardView: View {
+    @Binding var game: Game
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor")
@@ -16,7 +18,12 @@ struct LeaderboardView: View {
             VStack(spacing: 10) {
                 HeaderView()
                 LabelView()
-                RowView(index: 1, score: 10, date: Date())
+                VStack(spacing: 10) {
+                    ForEach(game.leaderboardEntries.indices, id: \.self) { index in
+                        let entry = game.leaderboardEntries[index]
+                        RowView(index: index + 1, score: entry.score, date: entry.date)
+                    }
+                }
             }
         }
     }
@@ -90,10 +97,10 @@ struct RowView: View {
 }
 
 #Preview("Light") {
-    LeaderboardView()
+    LeaderboardView(game: .constant(Game()))
 }
 
 #Preview("Dark") {
-    LeaderboardView()
+    LeaderboardView(game: .constant(Game()))
         .preferredColorScheme(.dark)
 }
