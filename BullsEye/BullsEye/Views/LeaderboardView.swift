@@ -1,0 +1,42 @@
+//
+//  LeaderboardView.swift
+//  BullsEye
+//
+//  Created by Mohsin Ali Ayub on 26.09.25.
+//
+
+import SwiftUI
+
+struct LeaderboardView: View {
+    var body: some View {
+        RowView(index: 1, score: 10, date: Date())
+    }
+}
+
+struct RowView: View {
+    let index: Int
+    let score: Int
+    let date: Date
+    
+    var body: some View {
+        HStack {
+            Slider(value: .constant(50), in: 1...100)
+                .padding()
+        }
+        .background(
+            RoundedRectangle(cornerRadius: .infinity)
+                .strokeBorder(Color("LeaderboardRowColor"), lineWidth: Constants.General.strokeWidth)
+        )
+        .padding(.horizontal)
+        .frame(maxWidth: 480)
+    }
+}
+
+#Preview("Light") {
+    LeaderboardView()
+}
+
+#Preview("Dark") {
+    LeaderboardView()
+        .preferredColorScheme(.dark)
+}
