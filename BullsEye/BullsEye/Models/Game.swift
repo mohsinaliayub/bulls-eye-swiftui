@@ -32,4 +32,14 @@ struct Game {
         let difference = abs(target - sliderValue)
         return 100 - difference
     }
+    
+    /// Updates the score and sets up a new round for the player.
+    /// - Parameter points: The number of points scored by the user in current round.
+    ///
+    /// Updates the target value with a random Int between slider's minimum and maximum value,
+    /// plus sets the slider's current value to be halfway in between its minimum and maximum value.
+    mutating func startNewRound(points: Int) {
+        score += points
+        round += 1
+    }
 }
