@@ -97,10 +97,10 @@ struct RowView: View {
 }
 
 #Preview("Light") {
-    LeaderboardView(game: .constant(Game()))
+    LeaderboardView(game: .constant(Game(loadTestData: true)))
 }
 
 #Preview("Dark") {
-    LeaderboardView(game: .constant(Game()))
+    LeaderboardView(game: .constant(Game(loadTestData: true)))
         .preferredColorScheme(.dark)
 }

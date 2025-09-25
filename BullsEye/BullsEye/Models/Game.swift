@@ -23,9 +23,12 @@ struct Game {
     
     private(set) var leaderboardEntries: [LeaderboardEntry] = []
     
-    init() {
+    init(loadTestData: Bool = false) {
         // Set a fresh game for the player.
         restart()
+        if loadTestData {
+            addTestData()
+        }
     }
     
     /// Calculates the total points for a difference between target value and player's guess.
@@ -85,6 +88,14 @@ struct Game {
         score = 0
         round = 1
         target = Int.random(in: 1...100)
+    }
+    
+    private mutating func addTestData() {
+        addToLeaderboard(score: 100)
+        addToLeaderboard(score: 80)
+        addToLeaderboard(score: 200)
+        addToLeaderboard(score: 50)
+        addToLeaderboard(score: 20)
     }
 }
 
