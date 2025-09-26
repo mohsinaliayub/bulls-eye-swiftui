@@ -20,7 +20,7 @@ struct Game {
     ///
     /// The round increments everytime the player makes a match. The round gets reset when a new game starts.
     private(set) var round = 0
-    
+    /// The slider's current value.
     var sliderValue = 50.0
     
     private(set) var leaderboardEntries: [LeaderboardEntry] = []
