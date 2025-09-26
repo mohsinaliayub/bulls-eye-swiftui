@@ -21,6 +21,8 @@ struct Game {
     /// The round increments everytime the player makes a match. The round gets reset when a new game starts.
     private(set) var round = 0
     
+    var sliderValue = 50.0
+    
     private(set) var leaderboardEntries: [LeaderboardEntry] = []
     
     init(loadTestData: Bool = false) {
@@ -63,6 +65,7 @@ struct Game {
         score += points
         round += 1
         target = Int.random(in: 1...100)
+        sliderValue = 50
         addToLeaderboard(score: points)
     }
     
@@ -88,6 +91,7 @@ struct Game {
         score = 0
         round = 1
         target = Int.random(in: 1...100)
+        sliderValue = 50
     }
     
     private mutating func addTestData() {

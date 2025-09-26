@@ -10,9 +10,9 @@ import SwiftUI
 struct PointsView: View {
     @Binding var alertIsVisible: Bool
     @Binding var game: Game
-    let sliderValue: Int
     
     var body: some View {
+        let sliderValue = Int(game.sliderValue.rounded())
         let points = game.points(for: sliderValue)
         VStack(spacing: 10) {
             InstructionText("The slider's value is")
@@ -36,9 +36,9 @@ struct PointsView: View {
 }
 
 #Preview("Portrait") {
-    PointsView(alertIsVisible: .constant(true), game: .constant(Game()), sliderValue: 50)
+    PointsView(alertIsVisible: .constant(true), game: .constant(Game()))
 }
 
 #Preview("Landscape Left", traits: .landscapeLeft) {
-    PointsView(alertIsVisible: .constant(true), game: .constant(Game()), sliderValue: 50)
+    PointsView(alertIsVisible: .constant(true), game: .constant(Game()))
 }
